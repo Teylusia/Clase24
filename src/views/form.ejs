@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="/form" method="POST">
+    <label for="name">Ingrese su nombre</label>
+    <input type="text" name="name" id="name">
+    <%for(let i = 0; i < errors.length; i++){ %>
+     <% if (errors[i].param == 'name') { %>
+      <p class="error"><%= errors[i].msg%></p>
+    <% } } %>
+    <select name="colors" id="colors">
+      <option value="">selecciona tu color favorito</option>
+      <option value="Rojo">Rojo</option>
+      <option value="Verde">Verde</option>
+      <option value="Fucsia">Fucsia</option>
+      <option value="Naranja">Naranja</option>
+      <option value="Azul">Azul</option>
+    </select>
+    <%for(let i = 0; i < errors.length; i++){ %>
+      <% if (errors[i].param == 'colors') { %>
+       <p class="error"><%= errors[i].msg%></p>
+     <% } } %>
+    <label for="email">Ingrese su mail</label>
+    <input type="email" name="email" id="email">
+    <%for(let i = 0; i < errors.length; i++){ %>
+      <% if (errors[i].param == 'email') { %>
+       <p class="error"><%= errors[i].msg%></p>
+     <% } } %>
+    <label for="edad">Ingrese su edad</label>
+    <input type="number" name="edad" id="edad">
+    <%for(let i = 0; i < errors.length; i++){ %>
+      <% if (errors[i].param == 'edad') { %>
+       <p class="error"><%= errors[i].msg%></p>
+     <% }  }%>
+    <button type="submit">Enviar</button>
+  </form>
+  <% if(typeof userData != 'undefined') { %>
+    <p>Hola <%= userData.name %>, elegiste el color: <%= userData.colors%>, tu email es:
+      <%= userData.email %> y tu edad es: <%= userData.edad %></p>
+  <%} else{%>
+
+  <%}%>
+  
+</body>
+</html>
